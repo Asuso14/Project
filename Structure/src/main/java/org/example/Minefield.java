@@ -15,27 +15,36 @@ public class Minefield {
 
     public static boolean casoDePrueba() {//leer caso de prueba
 
-        int[] Minefield = new int[2];
+        int[] Range = new int[2];
         String[] temp = UserChain();
 
         if (temp.length != 2){
             return true;
         }
-        for (int i = 0; i < Minefield.length; i++){
-
-            boolean status = CheckNumericFormat(Minefield,i,temp);
+        for (int i = 0; i < Range.length; i++){
+            boolean status = CheckNumericFormat(Range,i,temp);
             if (status){
                 return true;
             }else {
-                Minefield[i] = UserNumericValues(Minefield,temp,i);
+                Range[i] = UserNumericValues(Range,temp,i);
             }
         }
-        System.out.println(Arrays.toString(Minefield));
+        System.out.println(Arrays.toString(Range));
 
-        if (Minefield[0] <= 0 || Minefield[1] <= 0)//es el caso que marca el final
+        if (Range[0] <= 0 || Range[1] <= 0)//es el caso que marca el final
         return false;
         else {
-            // CÓDIGO PRINCIPAL AQUÍ
+
+            String[][] Minefield = new String[Range[1]][Range[0]];
+            for (int i = 0;i<Minefield.length;i++){
+                Minefield[i] = DefineRow(Minefield,i,entry.next(),Range[0]);
+            }
+            for (String[] i : Minefield){
+                for (String j :i){
+                    System.out.println(j);
+                }
+            }
+
             return true;
         }
     } // casoDePrueba
@@ -53,17 +62,30 @@ public class Minefield {
         boolean status;
         try {
             IntValue[IntPos] = Integer.parseInt(ValueToCheck[IntPos]);
-            status = false;
+            status = IntValue[IntPos] > 1000;
         }catch (InputMismatchException | NumberFormatException error){
             status = true;
         }
         return status;
     }
 
+    public static boolean CheckUserChainEntry(String Row, int LargeOfLine){
+        boolean status;
+        status = Row.matches("[\\d*-]*{"+ LargeOfLine +"}");
+        return status;
+    }
+
+    public static String[] DefineRow(String[][] Cube, int row, String UserRow, int Large){
+        while (!CheckUserChainEntry(UserRow,Large)){
+            UserRow = entry.next();
+        }
+        String []FinalRow = UserRow.split("");
+        System.arraycopy(FinalRow,0,Cube[row],0,Large);
+        return Cube[row];
+    }
+
     public static void main(String[] args) {
-
         while (casoDePrueba()) {
-
         }
     } // main
 }// class solution
