@@ -29,7 +29,6 @@ public class Minefield {
                 Range[i] = UserNumericValues(Range,temp,i);
             }
         }
-        System.out.println(Arrays.toString(Range));
 
         if (Range[0] <= 0 || Range[1] <= 0)//es el caso que marca el final
         return false;
@@ -38,11 +37,6 @@ public class Minefield {
             String[][] Minefield = new String[Range[1]][Range[0]];
             for (int i = 0;i<Minefield.length;i++){
                 Minefield[i] = DefineRow(Minefield,i,entry.next(),Range[0]);
-            }
-            for (String[] i : Minefield){
-                for (String j :i){
-                    System.out.println(j);
-                }
             }
 
             return true;
@@ -82,6 +76,12 @@ public class Minefield {
         String []FinalRow = UserRow.split("");
         System.arraycopy(FinalRow,0,Cube[row],0,Large);
         return Cube[row];
+    }
+
+    public static int TotalCounts(){
+        int total = 0;
+        
+        return total;
     }
 
     public static void main(String[] args) {
