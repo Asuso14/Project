@@ -7,7 +7,14 @@ public class MinefieldTest extends TestCase {
 
     @Test
     public void testCasoDePrueba() {
-        //No hay nada que probar, la lógica esta en las otras funciones.
+        /**int[] intArray = new int[2];
+        String test = "au";
+        boolean resultInvalid = Minefield.casoDePrueba();
+        assertFalse(resultInvalid);
+
+        String test2 = "holaaaa";
+        boolean resultValid = Minefield.casoDePrueba();
+        assertTrue(resultValid);**/
     }
 
     @Test
@@ -22,23 +29,23 @@ public class MinefieldTest extends TestCase {
     @Test
     public void testCheckNumericFormat() {
         int[] intArray = new int[2];
-        String[] stringArray = {"abc", "100"};
-        boolean resultInvalid = Minefield.CheckNumericFormat(intArray, 0, stringArray);
+        String[] test = {"abc", "100"};
+        boolean resultInvalid = Minefield.CheckNumericFormat(intArray, 0, test);
         assertTrue(resultInvalid);
 
-        String[] stringArray2 = {"1000","1"};
-        resultInvalid = Minefield.CheckNumericFormat(intArray, 0, stringArray2);
+        String[] test2 = {"1000","1"};
+        resultInvalid = Minefield.CheckNumericFormat(intArray, 0, test2);
         assertTrue(resultInvalid);
 
-        String[] stringArray3 = {"10","10"};
-        boolean resultValid = Minefield.CheckNumericFormat(intArray,0,stringArray3);
+        String[] test3 = {"10","10"};
+        boolean resultValid = Minefield.CheckNumericFormat(intArray,0, test3);
         assertFalse(resultValid);
     }
 
     @Test
     public void testCheckUserChainEntry() {
         String row = "*-*-*";
-        boolean result = Minefield.CheckUserChainEntry(row, 5);
+        boolean ValidResult = Minefield.CheckUserChainEntry(row, 5);
 
         String invalidRow = "*--*";
         boolean invalidResult = Minefield.CheckUserChainEntry(invalidRow, 5);
@@ -54,7 +61,7 @@ public class MinefieldTest extends TestCase {
 
         String invalidRow5 = "*--***";
         boolean invalidResult5 = Minefield.CheckUserChainEntry(invalidRow5, 5);
-        assertTrue(result);
+        assertTrue(ValidResult);
         assertFalse(invalidResult);
         assertFalse(invalidResult2);
         assertFalse(invalidResult3);
@@ -66,8 +73,8 @@ public class MinefieldTest extends TestCase {
     public void testDefineRow() {//No hay mucho mas que testear.
         // Porque las otras funciones corrigen los posibles errores antes...
         String[][] cube = new String[1][5];
-        String input = "*-*-*";
-        String[] result = Minefield.DefineRow(cube, 0, input, 5);
+        String test = "*-*-*";
+        String[] result = Minefield.DefineRow(cube, 0, test, 5);
         assertArrayEquals(new String[]{"*", "-", "*", "-", "*"}, result);
     }
 
