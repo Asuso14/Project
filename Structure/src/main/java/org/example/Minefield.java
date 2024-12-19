@@ -83,7 +83,7 @@ public class Minefield {
         boolean status = false;
         try {
             IntValue[IntPos] = Integer.parseInt(ValueToCheck[IntPos]);
-            if (IntValue[IntPos] >= 1000){status = true;}
+            if (IntValue[IntPos] > 1000){status = true;}
         }catch (InputMismatchException | NumberFormatException error){
             status = true;
         }
